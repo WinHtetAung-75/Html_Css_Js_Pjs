@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "League Spartan", sans-serif;
+}
+
+:root{
+    --bg:#FAEDF0;
+    --text:#161853;
+    --text2:#292C6D;
+    --other:#EC255A;
+    --before:#ec255a5c;
+    --after :#292c6d19;
+    --hover:rgba(0, 0, 255, 0.805);
+}
+
+header{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color:var(--bg);
+}
+
+/* For background we need to write before and after of header */
+
+header::after{
+    content: "";
+    border: 100px solid var(--after);
+    border-radius: 50%;
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    box-shadow: 1px 1px 5px var(--text);
+}
+
+header nav{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+header .nav-bar{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar .logo{
+    width: 100px;
+    height: 50px;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left;
+}
+
+.nav-bar .menu{
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-bar .menu li{
+    margin-right: 30px;
+}
+
+li a{
+text-decoration: none;
+white-space: nowrap;
+color: var(--text);
+font-weight: bold;
+}
+
+li a:hover{
+    color:var(--hover);
+}
+
+.search-box{
+    width: 200px;
+    height: 40px;
+    position: relative;
+}
+
+.search-box input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 30px;
+    border-radius: 5px;
+}
+
+.search-box a{
+    position: absolute;
+    left: 5px;
+    /* to place center */
+    top: 50%;
+    transform: translateY(-50%);
+    border-right: 2px solid black;
+    padding-right: 5px;
+}
+
+.menu-bar{
+    display: none;
+}
+
+@media only screen and (max-width:600px) {
+    .menu-bar{
+        display: block;
+    }
+
+    .nav-bar .menu{
+        display: none;
+    }
+}
+
+.content{
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    font-weight: bold;
+    color: var(--text);
+    z-index: 100;
+}
+
+.content .greeting-text{
+    color: var(--text2);
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.content .name{
+    margin-top: 15px;
+    font-size: 50px;
+}
+
+.content .job{
+    margin-top:15px;
+    display: flex;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--other);
+}
+
+.content .typing-text{
+    color: var(--text2);
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 35px;
+
+    /* For animation */
+    animation: typing-text 7s steps(18) infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right:4px solid var(--text2) ;
+}
+
+@keyframes typing-text {
+    0%{
+        width: 0ch;
+    } 50%{
+        width: 18ch;
+    }100%{
+        width: 0ch;
+    } 
+}
+
+.photo-container{
+ height: 85%;
+ width:400px;
+ position: absolute;
+right:30px;
+z-index:0;
+display: flex;
+align-items: end;
+/* background-color: blue; */
+}
+
+.photo-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    object-position: bottom;
+    z-index: 90;
+}
+
+.accounts{
+    display: flex;
+    flex-direction: column;
+}
+
+.accounts a{
+    margin-top: 5px;
+    color: black;
+}
+
+.accounts a:hover{
+    color: rgba(0, 0, 255, 0.703);
+}
+
+.btn-container{
+    display: flex;
+    margin:30px 0 0 30px;
+}
+
+.btn-container .btn-gp{
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    position: relative;
+}
+
+.btn-container .btn-gp .btn-outline{
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--text);
+    position: absolute;
+    border-radius: 5px;
+}
+
+.btn-container .btn-gp .btn{
+    width: 99%;
+    height: 99%;
+    color: var(--bg);
+    font-weight: bold;
+    background: linear-gradient(135deg,var(--text)10%,var(--other)100%);
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    transition-duration:300ms ;
+}
+
+.btn-gp:hover .btn{
+    transform: translate(5px,5px);
+}
+
+@media only screen and (max-width:500px){
+   .content{
+    top: 50%;
+    left: 0;
+   }
+}
+
+@media only screen and (max-width:430px) {
+    .content{
+        font-weight: 600;
+    }
+
+    .content .job{
+        display: flex;
+        flex-direction:column ;
+    }
+
+    .job .typing-text{
+        margin-left: 0;
+    }
+}
+
+/* For Side Bar Menu */
+
+.side-menu{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 10px;
+    text-align: center;
+    width: 200px;
+    position: absolute;
+    top: 10%;
+    right: 0;
+    z-index: 1000;
+    transform: translateY(-200%);
+}
+
+.tran-y-0{
+    transform: translateY(0);
+}
+
+.duration{
+    transition-duration: 500ms;
+}
+
+.side-menu li{
+    list-style-type: none;
+    padding: 4px 8px;
+    background-color: var(--bg);
+    border-bottom: 1px solid black ;
+}
+
+.side-menu li:last-child{
+    border-bottom: none;
+}
+
+@media only screen and (min-width:600) {
+    display: none;
+}
+
